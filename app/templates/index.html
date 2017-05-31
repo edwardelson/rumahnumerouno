@@ -1,0 +1,175 @@
+<!--
+	Story by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block head %}
+	<title>Rumah Numero Uno</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="{{ url_for('static', filename = 'assets/css/main.css') }}" />
+{% endblock %}
+
+{% block body %}
+		<!-- Wrapper -->
+			<div id="wrapper" class="divided">
+
+				<!-- One -->
+					<section class="banner style1 orient-left content-align-left image-position-right fullscreen">
+						<div class="content">
+							<h1>Rumah Numero Uno</h1>
+							<p class="major">
+								<script src="https://www.brainyquote.com/link/quotebr.js"></script>
+							</p>
+							<p>
+								{{ moment(time).format('LLL', refresh=True) }}
+							</p>
+  					</div>
+						<div class="image">
+							<img src="{{ url_for('static', filename = 'images/toapayoh.jpg') }}" alt="" />
+						</div>
+					</section>
+
+							<!-- Gallery -->
+					<section class="wrapper style1 align-center">
+						<div class="inner">
+							<h2>Recent Activities</h2>
+							<p>Berikut ini adalah cuplikan dari kegiatan-kegiatan nirfaedah penghuni Rumah Numero Uno</p>
+						</div>
+
+						<!-- Gallery -->
+						<div class="gallery style2 medium lightbox">
+							<article>
+								<a href="{{ url_for('static', filename = 'images/fernandi.jpeg') }}" class="image">
+									<img src="{{ url_for('static', filename = 'images/fernandi.jpeg') }}" alt="" height="290"/>
+								</a>
+								<div class="caption">
+									<h3>Fernandi is Back</h3>
+									<p>Kunjungan Fernandi ke Rumah Numero Uno disambut FIFA 2017. *Pesan ini disponsori Happi</p>
+								</div>
+							</article>
+							<article>
+								<div class="row">
+								    <div class="media">
+								      <iframe src="https://www.youtube.com/embed/RKm7KU_F9S8" allowfullscreen="" height="290"></iframe>
+								    </div>
+								</div>
+							</article>
+							<article>
+								<div class="row">
+								    <div class="media">
+								      <iframe src="https://www.youtube.com/embed/N5kENaOJPIc" allowfullscreen="" height="290"></iframe>
+								    </div>
+								</div>
+							</article>
+							<article>
+								<div class="row">
+								    <div class="media">
+								      <iframe src="https://www.youtube.com/embed/btPJPFnesV4" allowfullscreen="" height="290"></iframe>
+								    </div>
+								</div>
+							</article>
+							<article>
+								<div class="row">
+								    <div class="media">
+								      <iframe src="https://www.youtube.com/embed/hYDAXhE4xXs" allowfullscreen="" height="290"></iframe>
+								    </div>
+								</div>
+							</article>
+							<article>
+								<div class="row">
+								    <div class="media">
+								      <iframe src="https://www.youtube.com/embed/kX1O93X77d4" allowfullscreen="" height="290"></iframe>
+								    </div>
+								</div>
+							</article>
+						</div>
+
+						<div class="inner">
+							<h4></h4>
+						</div>
+					</section>
+
+				<!-- Items -->
+					<section class="wrapper style1 align-center">
+						<div class="inner">
+							<h2>Our Sister Sites</h2>
+							<p><strong>Rumahnumerouno</strong> works very closely with these sites. Click for more information!</p>
+							<div class="items style1 medium">
+								<section>
+									<a href="https://www.facebook.com/pantijompoo/"><span class="icon style2 major fa-diamond"></span></a>
+									<h3><a href="https://www.facebook.com/pantijompoo/">Panti Jompo</a></h3>
+									<p>Jompo berkualitas tinggi. Try our Facebook Messenger Mimin Chatbot!</p>
+								</section>
+								<section>
+									<a href="https://teoringasal.wordpress.com/"><span class="icon style2 major fa-save"></span></a>
+									<h3><a href="https://teoringasal.wordpress.com/">Teoringasal</a></h3>
+									<p>Bikin mager dan anti baper!</p>
+								</section>
+								<section>
+									<a href="http://how-i-met-your-mother.wikia.com/wiki/The_Bro_Code"><span class="icon style2 major fa-bar-chart"></span></a>
+									<h3><a href="http://how-i-met-your-mother.wikia.com/wiki/The_Bro_Code">The Bro Code</a></h3>
+									<p>A Bro never leaves a Bro behind. Legend *wait for it* dary! </p>
+								</section>
+							</div>
+						</div>
+					</section>
+
+					<!-- Form -->
+					<section class="wrapper style2 align-center">
+						<div class="inner">
+								<h2>Inquiry</h2>
+								<div class="content">
+										{% block page_content %}
+											<form class="form form-horizontal" method="post" role="form">
+													{{ form.hidden_tag() }}
+													{{ wtf.form_errors(form, hiddens="only") }}
+
+													<div class="field half first">
+															{{ wtf.form_field(form.name) }}
+													</div>
+													<div class="field half">
+															{{ wtf.form_field(form.email) }}
+													</div>
+													<div class="field">
+													{{ wtf.form_field(form.content) }}
+													</div>
+													<ul class="actions">
+															{{ wtf.form_field(form.submit) }}
+													</ul>
+											</form>
+										{% endblock %}
+								</div>
+						</div>
+					</section>
+
+				<!-- Footer -->
+					<footer class="wrapper style1 align-center">
+						<div class="inner">
+							<ul class="icons">
+								<li><a href="https://rumahnumerouno.slack.com/" class="icon style2 fa-slack"><span class="label">Slack</span></a></li>
+								<li><a href="https://www.facebook.com/pantijompoo/" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>
+								<li><a href="https://teoringasal.wordpress.com/" class="icon style2 fa-wordpress"><span class="label">Wordpress</span></a></li>
+								<li><a href="https://www.youtube.com/channel/UCz4KAGTA4orkvcROFhscpzA" class="icon style2 fa-youtube"><span class="label">Youtube</span></a></li>
+							</ul>
+							<p>&copy; Established {{ moment(time).fromTime(originTime, refresh=True) }} ago by GLAWED Production</p>
+						</div>
+					</footer>
+
+			</div>
+
+{% endblock %}
+
+{% block scripts %}
+	<!-- Scripts -->
+	<script src="{{ url_for('static', filename = 'assets/js/jquery.min.js') }}"></script>
+	<script src="{{ url_for('static', filename = 'assets/js/jquery.scrollex.min.js') }}"></script>
+	<script src="{{ url_for('static', filename = 'assets/js/jquery.scrolly.min.js') }}"></script>
+	<script src="{{ url_for('static', filename = 'assets/js/skel.min.js') }}"></script>
+	<script src="{{ url_for('static', filename = 'assets/js/util.js') }}"></script>
+	<script src="{{ url_for('static', filename = 'assets/js/main.js') }}"></script>
+	{{ moment.include_moment() }}
+{% endblock %}
