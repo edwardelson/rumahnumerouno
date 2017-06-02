@@ -15,7 +15,6 @@ from flask_moment import Moment
 from .forms import InquiryForm, LoginForm
 
 @main.route('/', methods=['GET', 'POST'])
-@login_required
 def index():
     form = InquiryForm()
 
