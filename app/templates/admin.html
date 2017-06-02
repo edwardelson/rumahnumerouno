@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Rumah Numero Uno - Login{% endblock %}
+
+{% block page_content %}
+  {% if current_user.is_authenticated %}
+      <div class="page-header">
+        <h1>Welcome Mimin!</h1>
+      </div>
+  {% else %}
+      <div class="page-header">
+        <h1>Admin Login</h1>
+      </div>
+      <div class="col-md-4">
+        {{ wtf.quick_form(form) }}
+      </div>
+  {% endif %}
+{% endblock %}

@@ -8,10 +8,16 @@ configure parameters for RumahNumeroUno Webapp
 
 import os
 
+# location of project folder
+basedir = os.path.abspath(os.path.dirname(__file__))
+
 # parent class Config
 class Config:
     # secret_key
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'hard to guess string'
+    # database
+    SQLALCHEMY_COMMIT_ON_TEARDOWN = True
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
     # email
     MAIL_SERVER = 'smtp.googlemail.com'
     MAIL_PORT = 587
@@ -32,11 +38,15 @@ class Config:
 # configuration for development, subclass of Config
 class DevelopmentConfig(Config):
     DEBUG = True
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
+        'sqlite:///' + os.path.join(basedir, 'data-dev.sqlite')
 
 
 # additional config for Heroku deployment
 class HerokuConfig(Config):
     SSL_DISABLE=bool(os.environ.get('SSL_DISABLE'))
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
+        'sqlite:///' + os.path.join(basedir, 'data.sqlite')
 
 
 # dict mapping
