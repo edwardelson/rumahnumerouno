@@ -22,7 +22,6 @@ def index():
     if form.validate_on_submit():
         # send inquiry to email
         send_email(user=form.name.data, email=form.email.data, content=form.content.data)
-        flash('Thank you for your inquiry!')
         return redirect(url_for('.index'))
 
     return render_template('index.html',
