@@ -1,3 +1,6 @@
-may 31
+v1.0
 - implement basic app without database
 - frontend, form and email
+
+v2.0
+- added /admin
