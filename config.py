@@ -28,6 +28,7 @@ class Config:
     RNO_MAIL_SUBJECT_PREFIX = '[Rumah Numero Uno]'
     RNO_MAIL_SENDER = 'Rumah Numero Uno Admin <rumah.numero.uno@gmail.com>'
     RNO_ADMIN = os.environ.get('RNO_ADMIN') or 'rumah.numero.uno@gmail.com'
+    RNO_ADMIN_PASSWORD = os.environ.get('RNO_ADMIN_PASSWORD')
     # SSL
     SSL_DISABLE = True
 

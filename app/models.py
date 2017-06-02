@@ -45,6 +45,21 @@ class User(UserMixin, db.Model):
     def is_administrator(self):
         return self.is_admin
 
+    #==========
+    # insert Admin
+    #==========
+    @staticmethod
+    def insert_admin():
+        u = User(username='admin',
+                 email=current_app.config['RNO_ADMIN'],
+                 password=current_app.config['RNO_ADMIN_PASSWORD'])
+
+        db.session.add(u)
+        try:
+            db.session.commit()
+        except IntegrityError:
+            db.session.rollback()
+
 
 # Flask login
 @login_manager.user_loader

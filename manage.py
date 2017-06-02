@@ -39,6 +39,8 @@ def deploy():
 
     upgrade()
 
+    User.insert_admin()
+
 # run the server
 if __name__ == '__main__':
     manager.run()
