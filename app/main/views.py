@@ -12,7 +12,8 @@ from . import main #import blueprint from main/
 from datetime import datetime
 from flask_moment import Moment
 
-from .forms import InquiryForm, LoginForm
+from .forms import InquiryForm, LoginForm, LSTMForm
+from ..ai_app import lstm_generate
 
 @main.route('/', methods=['GET', 'POST'])
 def index():
@@ -52,3 +53,22 @@ def logout():
     logout_user()
     flash('You have been logged out')
     return redirect(url_for('main.admin'))
+
+
+
+# for AI Application
+@main.route('/ai', methods=['GET', 'POST'])
+def ai():
+    formLSTM = LSTMForm()
+
+    # POST method
+    if formLSTM.validate_on_submit():
+        seed = formLSTM.seed.data
+
+        # generate text
+        teori = lstm_generate(seed)
+
+        return render_template('ai.html', teori=teori, formLSTM=formLSTM)
+
+
+    return render_template('ai.html', formLSTM=formLSTM, teori="")

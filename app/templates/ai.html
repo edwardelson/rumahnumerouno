@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Rumah Numero Uno - AI{% endblock %}
+
+{% block page_content %}
+    <div class="page-header">
+      <h1>Artificial Intelligence at Rumah Numero Uno</h1>
+    </div>
+    <div class="col-md-4">
+      <h3>Teoringasal Wisdom Generator</h2>
+      <p>
+          Trained with LSTM on Keras + TensorFlow with teoringasal.wordpress.com as text corpus
+      </p>
+    </div>
+    <div class="col-md-4">
+      {{ wtf.quick_form(formLSTM) }}
+      <p>
+          <h2></h2>
+          {{ teori }}
+      </p>
+    </div>
+{% endblock %}

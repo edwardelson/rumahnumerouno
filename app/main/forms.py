@@ -6,7 +6,7 @@ create wtforms
 
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, TextAreaField, PasswordField, BooleanField
-from wtforms.validators import Required, Length, Email
+from wtforms.validators import Required, Length, Email, Regexp
 
 # inquiry form at /index
 class InquiryForm(FlaskForm):
@@ -23,3 +23,9 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[Required()])
     remember_me = BooleanField('Keep me logged in')
     submit = SubmitField('Log In')
+
+
+# Form for LSTM
+class LSTMForm(FlaskForm):
+    seed = StringField('Topic', validators=[Required(), Length(1, 50), Regexp('^[a-zA-Z][a-zA-Z]*$')])
+    submit = SubmitField('Enlighten Me')
